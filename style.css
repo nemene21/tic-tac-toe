@@ -1,0 +1,99 @@
+
+body {
+    top:  0;
+    left: 0;
+    width:  100%;
+    height: 100%;
+    background-color: #002859;
+    overflow: hidden;
+    font-family: "Sigmar";
+    user-select: none;
+}
+
+#board {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 24px;
+
+    user-select: none;
+}
+
+.board_space {
+    width:  96px;
+    height: 96px;
+
+    background-color: #007899;
+    border-radius: 16px;
+    box-shadow: 0 0 12px #000000;
+
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fafdff;
+
+    transition: all 0.2s;
+    transform: scale(100%);
+}
+
+.board_space:hover {
+    background-color: #68aed4;
+    transform: scale(110%);
+}
+
+.board_space:active {
+    background-color: #68aed4;
+    transform: scale(125%);
+    transition: all 0.1s;
+}
+
+#title {
+    margin: 16px;
+    font-size: 96px;
+    text-align: center;
+    text-shadow: 0 6px 12px #0000009c;
+    color: #68aed4;
+}
+
+.toggle_button {
+    position: absolute;
+    bottom: 24px;
+    margin-left: 16px;
+
+    height: 96px;
+    width: fit-content;
+    padding: 0 24px 0 24px;
+
+    background-color: #007899;
+    border-radius: 16px;
+    box-shadow: 0 0 12px #000000;
+    border: none;
+
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fafdff;
+
+    font-family: "Sigmar";
+
+    transition: all 0.2s;
+    transform: scale(100%);
+}
+
+.toggle_button:hover {
+    background-color: #68aed4;
+    transform: scale(110%);
+}
+
+.toggle_button:active {
+    background-color: #68aed4;
+    transform: scale(125%);
+    transition: all 0.1s;
+}

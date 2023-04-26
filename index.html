@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <p id="title"> Tic Tac Toe! </p>
+
+        <div id="board">
+            <div class="board_space" id="space-0" onclick="board.play(0)"></div>
+            <div class="board_space" id="space-1" onclick="board.play(1)"></div>
+            <div class="board_space" id="space-2" onclick="board.play(2)"></div>
+            <div class="board_space" id="space-3" onclick="board.play(3)"></div>
+            <div class="board_space" id="space-4" onclick="board.play(4)"></div>
+            <div class="board_space" id="space-5" onclick="board.play(5)"></div>
+            <div class="board_space" id="space-6" onclick="board.play(6)"></div>
+            <div class="board_space" id="space-7" onclick="board.play(7)"></div>
+            <div class="board_space" id="space-8" onclick="board.play(8)"></div>
+        </div>
+
+        <button class="toggle_button" onclick="swapAI()" id="AIswapper"> AI: ✔ </button>
+        <script src="script.js"></script>
+    </body>
+</html>
