@@ -4,6 +4,11 @@ String.prototype.replaceAt = function(index, replacement) {
     return this.substring(0, index) + replacement + this.substring(index + replacement.length);
 }
 
+// "http://www.java2s.com/ref/javascript/javascript-string-copy.html"
+String.prototype.copy = function() {
+    return this.substring(0, this.length);
+}
+
 const AIbutton = document.getElementById("AIswapper");
 
 let use_ai = true
@@ -21,8 +26,53 @@ class Board {
     AIplay() {
         if (!this.data.includes(" ") || !use_ai) return;
 
+        let best_move;
+        let best_score = 0;
+
         let moves = this.getLegalMoves(this.data);
-        this.play(moves[Math.floor(Math.random() * moves.length)], true);
+        for (let i = 0; i < moves.length; i++) {
+            let new_score = this.minimax(true, moves[i], this.data.copy())
+
+            if (new_score >= best_score) {
+                best_score = new_score;
+                best_move = moves[i];
+            }
+        }
+        this.play(best_move, true);
+    }
+
+    minimax(minimising, move, board_data) {
+        let el    = ["X", "O"][Number(!minimising)];
+        let enemy = ["X", "O"][Number(minimising)];
+
+        board_data = board_data.replaceAt(move, el);
+
+        let score = Number(this.checkElWin(el, board_data)) - Number(this.checkElWin(enemy, board_data));
+
+        let moves = this.getLegalMoves(board_data);
+        if (moves.length != 0 && score == 0) {
+            let best_score = 0;
+            let best_move;
+
+            for (let i = 0; i < moves.length; i++) {
+
+                let new_score = this.minimax(!minimising, moves[i], board_data);
+
+                if (minimising && new_score <= best_score) {
+                    best_score = new_score;
+                    best_move  = moves[i];
+
+                } else if (!minimising && new_score >= best_score) {
+                    best_score = new_score;
+                    best_move  = moves[i];
+                }
+            }
+
+            return best_score;
+
+        } else {
+            return score;
+        }
     }
 
     getLegalMoves(board_data) {
